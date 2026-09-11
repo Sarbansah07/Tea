@@ -1,0 +1,7 @@
+import Link from 'next/link';
+import { ArrowLeft, Leaf } from 'lucide-react';
+import { BrewLab } from '@/components/BrewLab';
+import { ShopGrid } from '@/components/ShopGrid';
+import { TeaMatch } from '@/components/TeaMatch';
+
+export default function ShopPage() { return <main className="min-h-screen bg-[#f3eee4] text-[#24322c]"><header className="bg-[#13241d] px-6 py-5 text-white"><div className="mx-auto flex max-w-7xl items-center justify-between"><Link href="/" className="flex items-center gap-2 font-display text-2xl"><span className="grid h-9 w-9 place-items-center rounded-full bg-[#d5a84b] text-[#13241d]"><Leaf size={18} /></span>Kettle<span className="text-[#d5a84b]">&</span>Leaf</Link><Link href="/" className="text-sm text-[#c4d4c7]"><ArrowLeft className="mr-2 inline" size={15} /> Back home</Link></div></header><div className="mx-auto max-w-7xl px-6 py-16"><div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[.25em] text-[#8b4f2f]">Small packs · real leaf character</p><h1 className="mt-4 font-display text-6xl leading-none text-[#1d392c]">Tea that makes the room feel warmer.</h1><p className="mt-6 max-w-xl text-lg leading-8 text-[#617263]">Fresh, fragrant blends with tasting notes you can imagine before the kettle boils: malt, honey, spice and a little Assam sunshine.</p></div><div className="mt-12"><TeaMatch /></div><div id="shop-products" className="mt-16"><ShopGrid /></div><div className="mt-16"><BrewLab /></div></div></main>; }

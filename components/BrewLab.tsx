@@ -1,0 +1,12 @@
+'use client';
+
+import { Pause, Play, RotateCcw, Thermometer, Timer } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
+export function BrewLab() {
+  const [seconds, setSeconds] = useState(180);
+  const [running, setRunning] = useState(false);
+  useEffect(() => { if (!running || seconds === 0) return; const timer = window.setInterval(() => setSeconds(value => Math.max(0, value - 1)), 1000); return () => window.clearInterval(timer); }, [running, seconds]);
+  const progress = ((180 - seconds) / 180) * 100;
+  return <section className="grid gap-8 rounded-[2rem] bg-[#d4e0cf] p-7 text-[#173127] md:grid-cols-[.8fr_1.2fr] md:p-10"><div><p className="eyebrow eyebrow-dark"><span /> Brew lab</p><h2 className="mt-4 font-display text-5xl leading-none">Your best cup,<br /><i className="font-normal text-[#a96338]">timed.</i></h2><p className="mt-5 max-w-sm leading-7 text-[#617263]">Use three minutes for a strong, rounded household brew. Adjust the timer to your ritual.</p><div className="mt-7 flex gap-5 text-sm text-[#536758]"><span><Thermometer className="mr-2 inline text-[#a96338]" size={17} /> 94°C</span><span><Timer className="mr-2 inline text-[#a96338]" size={17} /> 3 min</span></div></div><div className="rounded-3xl bg-[#fffaf0] p-7 shadow-[0_18px_50px_rgba(65,46,24,.08)]"><div className="flex items-center justify-between"><span className="text-xs font-bold uppercase tracking-[.2em] text-[#718073]">Steeping now</span><span className="font-display text-5xl text-[#a96338]">{String(Math.floor(seconds / 60)).padStart(2, '0')}:{String(seconds % 60).padStart(2, '0')}</span></div><div className="mt-7 h-3 overflow-hidden rounded-full bg-[#e7ddcc]"><div className="h-full rounded-full bg-[#d17842] transition-all duration-1000" style={{ width: `${progress}%` }} /></div><div className="mt-7 flex gap-3"><button type="button" onClick={() => setRunning(value => !value)} className="rounded-full bg-[#173127] px-5 py-3 text-sm font-bold text-white hover:bg-[#a96338]">{running ? <><Pause className="mr-2 inline" size={15} /> Pause</> : <><Play className="mr-2 inline" size={15} /> Start timer</>}</button><button type="button" onClick={() => { setSeconds(180); setRunning(false); }} className="rounded-full border border-[#173127]/15 px-5 py-3 text-sm font-bold"><RotateCcw className="mr-2 inline" size={15} /> Reset</button></div>{seconds === 0 && <p className="mt-5 animate-pop font-bold text-[#a96338]">Ready. Take the first sip while it is warm.</p>}</div></section>;
+}
