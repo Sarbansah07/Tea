@@ -9,6 +9,6 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000.
+Open https://tea-platform.vercel.app/.
 
 The current milestone is a polished, responsive marketing and catalogue experience with live-lot presentation, price board, grade discovery, household shopping entry point, and B2B enquiry form. Payment, authentication, PostgreSQL, shipping, WhatsApp, GST verification, and admin workflows should be wired to production credentials before launch.
